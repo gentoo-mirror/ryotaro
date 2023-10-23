@@ -7,6 +7,10 @@ SLOT="0"
 IUSE="vala docs introspection test"
 inherit meson
 
+RDEPEND=">=gui-libs/gtk-4.10.5"
+DEPEND="${RDEPEND}"
+# REQUIRED_USE="gtk"
+
 src_configure() {
 	local emesonargs=(
 		# meson_use <USE flag> [option name]
