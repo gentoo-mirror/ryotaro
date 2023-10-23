@@ -7,22 +7,22 @@ SLOT="0"
 IUSE="vala docs introspection test"
 inherit meson
 
-RDEPEND=">=gui-libs/gtk-4.10.5"
+RDEPEND="
+	>=gui-libs/gtk-4.10.5[wayland]
+"
+
 DEPEND="${RDEPEND}"
-# REQUIRED_USE="gtk"
 
 src_configure() {
 	local emesonargs=(
 		# meson_use <USE flag> [option name]
 		# https://devmanual.gentoo.org/eclass-reference/meson.eclass/index.html
 		$(meson_use vala vapi)
+		"-Dexamples=false"
 		$(meson_use test tests)
 		$(meson_use docs)
 		$(meson_use introspection)
 	)
 	meson_src_configure
+
 }
-
-# src_install() {
-
-#}
