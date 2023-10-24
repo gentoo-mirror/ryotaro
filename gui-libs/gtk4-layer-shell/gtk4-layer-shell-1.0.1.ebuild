@@ -5,6 +5,7 @@ SRC_URI="https://github.com/wmww/gtk4-layer-shell/archive/refs/tags/v1.0.1.tar.g
 LICENSE="MIT"
 SLOT="0"
 IUSE="vala docs introspection test"
+KEYWORDS="~amd64"
 inherit meson
 
 RDEPEND="
