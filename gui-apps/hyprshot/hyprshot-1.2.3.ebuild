@@ -11,6 +11,7 @@ IUSE=""
 DEPEND="(
     gui-apps/slurp
 	gui-apps/grim
+	gui-apps/wl-clipboard
 )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
