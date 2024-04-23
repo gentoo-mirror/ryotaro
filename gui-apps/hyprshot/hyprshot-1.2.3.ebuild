@@ -8,7 +8,9 @@ IUSE=""
 KEYWORDS="amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="(
+    gui-apps/slurp
+)"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
