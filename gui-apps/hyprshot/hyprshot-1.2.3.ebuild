@@ -10,6 +10,7 @@ IUSE=""
 
 DEPEND="(
     gui-apps/slurp
+	gui-apps/grim
 )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
