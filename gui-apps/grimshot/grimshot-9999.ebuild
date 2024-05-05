@@ -11,6 +11,7 @@ IUSE="+bash-completion"
 
 DEPEND="(
   gui-apps/grim
+  gui-apps/slurp
   bash-completion? ( app-shells/bash-completion )
 )"
 RDEPEND="${DEPEND}"
