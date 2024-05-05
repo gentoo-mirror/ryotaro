@@ -10,6 +10,7 @@ KEYWORDS="amd64"
 IUSE="+bash-completion"
 
 DEPEND="(
+  gui-apps/grim
   bash-completion? ( app-shells/bash-completion )
 )"
 RDEPEND="${DEPEND}"
