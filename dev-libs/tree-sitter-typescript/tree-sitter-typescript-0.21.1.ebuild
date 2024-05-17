@@ -3,20 +3,22 @@
 
 EAPI=8
 
-inherit tree-sitter-grammar
+inherit git-r3
 
-DESCRIPTION="TypeScript grammar for Tree-sitter"
+DESCRIPTION="tree-sitter-typescript"
 HOMEPAGE="https://github.com/tree-sitter/tree-sitter-typescript"
-S="${WORKDIR}"/${P}/typescript
-
+#SRC_URI="git@github.com:tree-sitter/tree-sitter-typescript.git"
+EGIT_REPO_URI=https://github.com/tree-sitter/tree-sitter-typescript.git
+GIT_BRANCH="v0.21.1"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
-DEPEND="dev-util/tree-sitter-cli"
+KEYWORDS="~amd64"
+IUSE=""
 
-src_prepare() {
-	# fix test corpus path
-	ln -s ../common test || die
+DEPEND=""
+RDEPEND="${DEPEND}"
+BDEPEND=""
 
-	tree-sitter-grammar_src_prepare
+src_test() {
+	:
 }
