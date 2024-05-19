@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DEPEND=( gui-apps/grim gui-apps/slurp bash-completion? ( app-shells/bash-completion ) )
+DESCRIPTION=Grimshot is a helper for screenshots within sway
+EAPI=8
+HOMEPAGE=https://github.com/OctopusET/sway-contrib
+INHERIT=bash-completion-r1
+IUSE=+bash-completion
+KEYWORDS=amd64
+LICENSE=MIT
+RDEPEND=( gui-apps/grim gui-apps/slurp bash-completion? ( app-shells/bash-completion ) )
+SLOT=0
+SRC_URI=https://github.com/OctopusET/sway-contrib/archive/refs/heads/master.zip
+_eclasses_=toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	bash-completion-r1	f5e7a020fd9c741740756aac61bf75ff
+_md5_=47e430a9239d698ac1891aa73ef7c5ac
