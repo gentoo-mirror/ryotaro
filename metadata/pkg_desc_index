@@ -2,5 +2,5 @@ dev-libs/tree-sitter-typescript 0.21.1: tree-sitter-typescript
 gui-apps/grimshot 9999: Grimshot is a helper for screenshots within sway
 gui-apps/hyprshot 1.2.3: Hyprshot is an utility to easily take screenshot in Hyprland using your mouse.
 gui-apps/regreet 0.1.1: 
-gui-libs/gtk4-layer-shell 1.0.1: A library for using the Layer Shell Wayland protocol with GTK4.
+gui-libs/gtk4-layer-shell 1.0.1 1.1.0: A library for using the Layer Shell Wayland protocol with GTK4.
 x11-misc/rofi-wayland 1.7.5: A Fork of Rofi with wayland support
