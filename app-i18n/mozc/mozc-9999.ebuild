@@ -7,19 +7,22 @@ HOMEPAGE="https://github.com/fcitx/mozc"
 SLOT="0"
 LISENCE="Google Inc."
 DEPEND="dev-build/bazelisk"
-EGIT_REPO_URI="git@github.com:fcitx/mozc.git"
+EGIT_REPO_URI="https://github.com/fcitx/mozc"
 
 # git fetch is executed in src_unpack.
 # https://gitweb.gentoo.org/repo/gentoo.git/tree/app-i18n/mozc/mozc-2.28.5029.102-r5.ebuild#n136
-src_unpack() {
-    git-r3_fetch $HOMEPAGE
-    git-r3_checkout $HOMEPAGE "${WORKDIR}/fcitx-mozc"
-    echo "unpack"
-}
+# src_unpack() {
+#     git-r3_fetch $HOMEPAGE
+#     git-r3_checkout $HOMEPAGE "${WORKDIR}/fcitx-mozc"
+# }
+# src_prepare() {
+#     echo "prepare"
+#     :
+# }
 
 src_compile() {
-    echo "compile"
-    cd "${WORKDIR}/fcitx-mozc/src" || die "Failed to change directory to ${WORKDIR}/fcitx-mozc"
+    echo "${WORKDIR}"
+    cd "src" || die "Failed to change directory to ${WORKDIR}/src"
     # The source of the command: https://github.com/fcitx/mozc/blob/fcitx/scripts/build_fcitx5_bazel
     bazelisk build -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool
 }
