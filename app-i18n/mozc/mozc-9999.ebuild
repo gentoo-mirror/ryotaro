@@ -5,33 +5,40 @@ inherit git-r3
 DESCRIPTION="Mozc - Japanese input method editor. Provide the latest version of Mozc hosted on fcitx/mozc for workaround of build failure at 2.28.5029.102-r5."
 HOMEPAGE="https://github.com/fcitx/mozc"
 SLOT="0"
-LICENCE="Google Inc."
-# DEPEND="dev-build/bazelisk"
+LICENCE="Google Inc"
 EGIT_REPO_URI="https://github.com/fcitx/mozc"
 
-BazelDistDir="/tmp/mozc/bazel-distdir"
-
+# https://zenn.dev/phoepsilonix/articles/mozc-offiline-build
 # git fetch is executed in src_unpack.
 # https://gitweb.gentoo.org/repo/gentoo.git/tree/app-i18n/mozc/mozc-2.28.5029.102-r5.ebuild#n136
 src_unpack() {
     git-r3_fetch $HOMEPAGE
-    git-r3_checkout $HOMEPAGE
+    git-r3_checkout $HOMEPAGE mozc-9999
+    git-r3_fetch  https://github.com/bazelbuild/bazel-central-registry
+    git-r3_checkout https://github.com/bazelbuild/bazel-central-registry bcr 
     curl -o bazel https://releases.bazel.build/8.2.1/release/bazel-8.2.1-linux-x86_64
     chmod +x bazel
-    cd mozc-9999/src
-    ../../bazel build -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool
-    cp bazel-bin/unix/fcitx5/fcitx5-mozc.so ../
-    cp bazel-bin/server/mozc_server ../
-    cp bazel-bin/gui/tool/mozc_tool ../
-    mkdir ../fcitx5_data
-    PREFIX="../fcitx5_data" ../scripts/install_fcitx5_data
-    mkdir ../fcitx5_icons
-    PREFIX="../fcitx5_icons" ../scripts/install_fcitx5_icons
+    cd mozc-9999/src || die
+    ../../bazel build --nobuild --build_event_json_file=../../bep.json --experimental_repository_resolved_file=../../resolved.bzl --repository_cache="../../bazel-cache" --registry=file://$(pwd)/../../bcr  -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool || die
+    ../../bazel fetch --build_event_json_file=../../bep.json --experimental_repository_resolved_file=../../resolved.bzl --repository_cache="../../bazel-cache" --registry=file://$(pwd)/../../bcr  -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool || die
+    # cd mozc-9999/src
+    # ../../bazel build -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool
+    # cp bazel-bin/unix/fcitx5/fcitx5-mozc.so ../
+    # cp bazel-bin/server/mozc_server ../
+    # cp bazel-bin/gui/tool/mozc_tool ../
+    # mkdir ../fcitx5_data
+    # PREFIX="../fcitx5_data" ../scripts/install_fcitx5_data
+    # mkdir ../fcitx5_icons
+    # PREFIX="../fcitx5_icons" ../scripts/install_fcitx5_icons
 
 }
 
 src_compile() {
-    :
+    pwd
+    ls -la
+    cd src
+    ../../bazel clean --expunge
+    ../../bazel build --repository_cache=../../bazel-cache --registry=file://$(pwd)/../../bcr  -c opt --copt=-fPIC --config oss_linux --define server=1 unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool
 }
 
 src_install() {
