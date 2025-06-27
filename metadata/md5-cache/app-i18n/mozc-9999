@@ -1,0 +1,10 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Mozc - Japanese input method editor. Provide the latest version of Mozc hosted on fcitx/mozc for workaround of build failure at 2.28.5029.102-r5.
+EAPI=8
+HOMEPAGE=https://github.com/fcitx/mozc
+INHERIT=git-r3
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=fd1a3cd8dd07e079ae2a2daa36b78d7f

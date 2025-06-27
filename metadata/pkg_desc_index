@@ -1,3 +1,4 @@
+app-i18n/mozc 9999: Mozc - Japanese input method editor. Provide the latest version of Mozc hosted on fcitx/mozc for workaround of build failure at 2.28.5029.102-r5.
 dev-libs/tree-sitter-typescript 0.21.1: tree-sitter-typescript
 gui-apps/grimshot 9999: Grimshot is a helper for screenshots within sway
 gui-apps/hyprshot 1.2.3: Hyprshot is an utility to easily take screenshot in Hyprland using your mouse.
